@@ -13,11 +13,12 @@ default_diff_fn(c1::CT1,c2::CT2) where {CT1<:Union{Colorant,Real}, CT2<:Union{Co
 `SegmentedImage` type contains the index-label mapping, assigned labels,
 segment mean intensity and pixel count of each segment.
 """
-struct SegmentedImage{T<:AbstractArray,U<:Union{Colorant,Real}}
+struct SegmentedImage{T<:AbstractArray,U}
     image_indexmap::T
     segment_labels::Vector{Int}
     segment_means::Dict{Int,U}
     segment_pixel_count::Dict{Int,Int}
+    segment_bbox::Dict{Int,Tuple{CartesianIndex,CartesianIndex}}
 end
 
 """
